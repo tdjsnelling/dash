@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="tech.tdjs.dash.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Speed"
+        android:id="@+id/speedText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/abc_tint_default" />
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/speedTicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="48sp"
+        app:ticker_animationDuration="500"
+        android:gravity="center"
+        android:layout_below="@+id/speedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/peakSpeedTicker"
+        android:layout_alignEnd="@+id/peakSpeedTicker"
+        android:clickable="true"
+        android:contextClickable="false" />
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/avgSpeedTicker"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="32sp"
+        app:ticker_animationDuration="500"
+        android:gravity="center"
+        android:layout_below="@+id/speedText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/bearingText"
+        android:layout_toStartOf="@+id/bearingText" />
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/peakSpeedTicker"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="32sp"
+        app:ticker_animationDuration="500"
+        android:gravity="center"
+        android:layout_below="@+id/speedText"
+        android:layout_alignRight="@+id/compassText"
+        android:layout_alignEnd="@+id/compassText"
+        android:layout_toRightOf="@+id/bearingText"
+        android:layout_toEndOf="@+id/bearingText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="mph"
+        android:id="@+id/unitsText"
+        android:layout_below="@+id/speedTicker"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/abc_tint_default"
+        android:clickable="true"
+        android:longClickable="true" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/avgIcon"
+        android:src="@drawable/ic_avg"
+        android:layout_alignTop="@+id/unitsText"
+        android:layout_alignRight="@+id/avgSpeedTicker"
+        android:layout_alignEnd="@+id/avgSpeedTicker"
+        android:layout_alignBottom="@+id/unitsText"
+        android:cropToPadding="false"
+        android:layout_alignLeft="@+id/avgSpeedTicker"
+        android:adjustViewBounds="false"
+        android:scaleType="centerInside"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/peakIcon"
+        android:src="@drawable/ic_action_name"
+        android:layout_alignTop="@+id/unitsText"
+        android:layout_alignLeft="@+id/peakSpeedTicker"
+        android:layout_alignStart="@+id/peakSpeedTicker"
+        android:layout_alignBottom="@+id/unitsText"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:layout_alignRight="@+id/peakSpeedTicker"
+        android:scaleType="centerInside"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="avg"
+        android:id="@+id/avgLabel"
+        android:layout_alignRight="@+id/avgIcon"
+        android:layout_alignEnd="@+id/avgIcon"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/avgIcon"
+        android:layout_alignTop="@+id/avgIcon"
+        android:gravity="center_horizontal"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="top"
+        android:id="@+id/topLabel"
+        android:layout_alignTop="@+id/peakIcon"
+        android:layout_alignLeft="@+id/peakIcon"
+        android:layout_alignStart="@+id/peakIcon"
+        android:layout_alignRight="@+id/speedTicker"
+        android:layout_alignEnd="@+id/speedTicker"
+        android:layout_alignBottom="@+id/peakIcon"
+        android:textSize="18dp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="null"
+        android:id="@+id/scrubText"
+        android:layout_below="@+id/unitsText"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:textColor="@color/colorAccent" />
+
+    <com.robinhood.spark.SparkView
+        android:id="@+id/sparkview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/bearingText"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
+        android:layout_below="@+id/scrubText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Bearing"
+        android:id="@+id/bearingText"
+        android:layout_above="@+id/bearingTicker"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/abc_tint_default" />
+
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/bearingTicker"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="48sp"
+        app:ticker_animationDuration="500"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/unitsText"
+        android:layout_toStartOf="@+id/unitsText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="NOFIX"
+        android:id="@+id/compassText"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/unitsText"
+        android:layout_toEndOf="@+id/unitsText"
+        android:layout_below="@+id/bearingText"
+        android:textSize="48sp"
+        android:gravity="center" />
+
+</RelativeLayout>
